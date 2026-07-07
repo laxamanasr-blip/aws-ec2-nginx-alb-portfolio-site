@@ -52,7 +52,7 @@ The project started as a simple EC2-hosted static website and evolved into a mor
 - Verified public access to the website using the instance’s public address
 
 ### EC2 instance
-![EC2 instance details](ec2.instances.png)
+![EC2 instance details](./ec2.instances.png)
 
 ### Website running on EC2 + Nginx
 ![Portfolio website hosted on EC2](website.png)
