@@ -51,17 +51,32 @@ The project started as a simple EC2-hosted static website and evolved into a mor
 - Replaced the default web page with a custom **HTML portfolio landing page**
 - Verified public access to the website using the instance’s public address
 
+### EC2 instance
+![EC2 instance details](ec2.instances.png)
+
+### Website running on EC2 + Nginx
+![Portfolio website hosted on EC2](website.png)
+
 ### Phase 2 – Put the website behind an ALB
 - Created an **Application Load Balancer**
 - Created a **target group**
 - Registered the EC2 instance as a target
 - Verified health checks and successful traffic flow through the ALB DNS name
 
+### ALB listener configuration
+![ALB listener](ALB.listener.png)
+
+### Target group health
+![Target groups](target.groups.png)
+
 ### Phase 3 – Evaluate surrounding AWS design and cost decisions
 - Compared **Internet Gateway vs NAT Gateway** in the context of public vs private workloads
 - Reviewed **ALB billing** and understood that it can continue to incur charges while provisioned
 - Tested / reviewed **AWS WAF** and WAF logging behavior, then removed it to avoid unnecessary cost for a low-traffic personal lab
 - Checked **AWS Free Plan / credits** in the Billing console to understand what is actually covered and what can still consume credits
+
+### Billing / Free Plan view
+![AWS billing / free plan](aws.billing.png)
 
 ---
 
