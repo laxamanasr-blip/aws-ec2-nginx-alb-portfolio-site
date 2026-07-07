@@ -10,6 +10,8 @@ The project started as a simple EC2-hosted static website and evolved into a mor
 ## Architecture
 **Internet → Application Load Balancer → EC2 (Amazon Linux + Nginx)**
 
+![Architecture](screenshots/aws-web-architecture.png)
+
 ### Current components
 - **Amazon EC2** – hosts the website
 - **Amazon Linux** – OS for the web server
