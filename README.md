@@ -55,7 +55,7 @@ The project started as a simple EC2-hosted static website and evolved into a mor
 ![EC2 instance details](screenshots/ec2.instances.png)
 
 ### Website running on EC2 + Nginx
-![Portfolio website hosted on EC2](website.png)
+![Portfolio website hosted on EC2](screenshots/website.png)
 
 ### Phase 2 – Put the website behind an ALB
 - Created an **Application Load Balancer**
@@ -64,10 +64,10 @@ The project started as a simple EC2-hosted static website and evolved into a mor
 - Verified health checks and successful traffic flow through the ALB DNS name
 
 ### ALB listener configuration
-![ALB listener](ALB.listener.png)
+![ALB listener](screenshots/ALB.listener.png)
 
 ### Target group health
-![Target groups](target.groups.png)
+![Target groups](screenshots/target.groups.png)
 
 ### Phase 3 – Evaluate surrounding AWS design and cost decisions
 - Compared **Internet Gateway vs NAT Gateway** in the context of public vs private workloads
@@ -76,7 +76,7 @@ The project started as a simple EC2-hosted static website and evolved into a mor
 - Checked **AWS Free Plan / credits** in the Billing console to understand what is actually covered and what can still consume credits
 
 ### Billing / Free Plan view
-![AWS billing / free plan](aws.billing.png)
+![AWS billing / free plan](screenshots/aws.billing.png)
 
 ---
 
