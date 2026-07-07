@@ -1,1 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sid Laxamana | Network & Cloud Infrastructure Engineer</title>
+  <meta name="description" content="Sid Laxamana - Network Engineer building cloud, infrastructure, AWS, and homelab projects across networking, security, observability, and self-hosted systems." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --bg2:#121a33;
+      --panel:#141d38;
+      --text:#e8ecf8;
+      --muted:#aeb9d6;
+      --accent:#5ab0ff;
+      --accent2:#7ef0c5;
+      --line:#2a3764;
+      --chip:#22315d;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --max:1140px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(90,176,255,.18), transparent 22%),
+        radial-gradient(circle at left center, rgba(126,240,197,.12), transparent 18%),
+        linear-gradient(180deg, var(--bg) 0%, #0f1630 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--max);margin:0 auto;padding:0 22px}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(12px);
+      background:rgba(11,16,32,.78);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      min-height:68px;gap:20px;
+    }
+    .brand{
+      font-weight:800;font-size:1.05rem;letter-spacing:.2px;color:#fff;
+    }
+    .brand span{color:var(--accent)}
+    .nav-links{
+      display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem;
+    }
+    .nav-links a{color:var(--muted)}
+    .nav-links a:hover{color:#fff;text-decoration:none}
 
+    .hero{
+      padding:72px 0 42px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .9fr;
+      gap:28px;
+      align-items:start;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border:1px solid rgba(255,255,255,.08);
+      border-radius:999px;background:rgba(255,255,255,.03);
+      color:var(--muted);font-size:.92rem;margin-bottom:18px;
+    }
+    .eyebrow .dot{
+      width:9px;height:9px;border-radius:50%;background:var(--accent2);
+      box-shadow:0 0 0 5px rgba(126,240,197,.12);
+    }
+    h1{
+      margin:0 0 14px;
+      font-size:clamp(2rem, 4vw, 3.6rem);
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+    .gradient{
+      background:linear-gradient(90deg,#fff 0%, #a8d8ff 45%, #7ef0c5 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero p.lead{
+      font-size:1.05rem;
+      color:var(--muted);
+      max-width:760px;
+      margin:0 0 18px;
+    }
+    .cta-row{
+      display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 18px;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 18px;border-radius:12px;font-weight:700;
+      border:1px solid transparent;transition:.2s ease;
+      box-shadow:var(--shadow);
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),#78d3ff);
+      color:#08111f;
+    }
+    .btn-primary:hover{transform:translateY(-1px);text-decoration:none}
+    .btn-secondary{
+      background:rgba(255,255,255,.03);
+      border-color:rgba(255,255,255,.08);
+      color:#fff;
+    }
+    .btn-secondary:hover{background:rgba(255,255,255,.06);text-decoration:none}
+
+    .hero-card,.card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+    }
+    .hero-card{padding:22px}
+    .hero-card h3,.card h3{margin:0 0 12px}
+    .stats{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+      margin-top:10px;
+    }
+    .stat{
+      padding:14px;border-radius:16px;background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .stat .num{
+      font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:4px;
+    }
+    .stat .label{
+      font-size:.9rem;color:var(--muted)
+    }
+
+    .section{padding:58px 0 8px}
+    .section h2{
+      margin:0 0 12px;font-size:1.9rem;letter-spacing:-.02em;
+    }
+    .section .sub{
+      color:var(--muted);max-width:820px;margin-bottom:28px;
+    }
+    .chips{
+      display:flex;flex-wrap:wrap;gap:10px;
+    }
+    .chip{
+      padding:10px 14px;border-radius:999px;
+      background:var(--chip);border:1px solid rgba(255,255,255,.06);
+      color:#dce6ff;font-size:.94rem;
+    }
+
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{padding:22px}
+    .muted{color:var(--muted)}
+    .list{margin:0;padding-left:18px;color:var(--muted)}
+    .list li{margin:8px 0}
+    .project{display:flex;flex-direction:column;gap:12px;height:100%}
+    .project .tagrow{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{
+      display:inline-block;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(90,176,255,.12);
+      color:#cde8ff;font-size:.82rem;border:1px solid rgba(90,176,255,.18);
+    }
+
+    .arch-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+    }
+    .spec-list{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+    .spec{
+      padding:14px;border-radius:14px;background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .spec strong{display:block;color:#fff;margin-bottom:4px}
+
+    .cert-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .cert{
+      padding:14px;border-radius:14px;background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .cert strong{display:block;color:#fff;margin-bottom:4px}
+
+    .timeline{display:flex;flex-direction:column;gap:16px}
+    .timeline-item{
+      padding:18px;border-left:3px solid var(--accent);
+      background:rgba(255,255,255,.02);
+      border-radius:0 14px 14px 0;
+    }
+    .timeline-item h4{margin:0 0 6px;font-size:1rem}
+    .timeline-item .meta{color:var(--muted);font-size:.92rem;margin-bottom:8px}
+
+    .footer{padding:48px 0 70px;color:var(--muted);font-size:.95rem}
+    .footer-box{
+      padding:22px;border-radius:18px;background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .small{font-size:.95rem}
+
+    @media (max-width: 980px){
+      .hero-grid,.grid-2,.grid-3,.arch-grid,.cert-list,.spec-list{
+        grid-template-columns:1fr;
+      }
+      .nav-inner{align-items:flex-start;padding:14px 0}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Sid<span>Builds</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#stack">Stack</a>
+        <a href="#homelab">Homelab</a>
+        <a href="#projects">Projects</a>
+        <a href="#certs">Certifications</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Links</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Network Engineer → Cloud / Infrastructure Engineer
+        </div>
+
+        <h1>
+          Hi, I’m <span class="gradient">Sid Laxamana</span><br />
+          I build networks, homelabs, and cloud infrastructure.
+        </h1>
+
+        <p class="lead">
+          Welcome to the web version of my GitHub profile. I’m a network engineer with a background in enterprise networking,
+          SD-WAN, security, and infrastructure operations, and I’m building toward deeper cloud and infrastructure engineering
+          through hands-on AWS projects and a practical homelab.
+        </p>
+
+        <p class="lead">
+          This site mirrors what I’m building on GitHub: lab projects, infrastructure notes, architecture writeups,
+          troubleshooting case studies, and the systems I use to bridge traditional networking with cloud infrastructure.
+          My main public lab repository,
+          <a href="https://github.com/laxamanasr-blip/homelab-network-core" target="_blank" rel="noopener noreferrer">homelab-network-core</a>,
+          is where I document the core architecture of my homelab and the services running on it.
+        </p>
+
+        <div class="cta-row">
+          <a class<a class="btn btn-primary" href="https://github.com/laxamanasr-blip" target="_blank" rel="noopener noreferrer">View GitHub Profile</a>
+          <a class="btn btn-secondary" href="https://github.com/laxamanasr-blip/homelab-network-core" target="_blank" rel="noopener noreferrer">Open Homelab Repo</a>
+          <a class="btn btn-secondary" href="#projects">See Featured Projects</a>
+        </div>
+
+        <div class="chips" style="margin-top:18px">
+          <span class="chip">AWS</span>
+          <span class="chip">Nginx</span>
+          <span class="chip">Proxmox</span>
+          <span class="chip">OPNsense</span>
+          <span class="chip">SD-WAN</span>
+          <span class="chip">Network Security</span>
+          <span class="chip">Windows Server</span>
+          <span class="chip">Monitoring</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Profile snapshot</h3>
+        <p class="muted" style="margin-top:0">
+          My portfolio focus is practical infrastructure engineering: networking fundamentals, real operations,
+          cloud labs, documentation, and systems that are actually useful to run and troubleshoot.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="num">CCNP</div>
+            <div class="label">Enterprise track completed</div>
+          </div>
+          <div class="stat">
+            <div class="num">NSE 4</div>
+            <div class="label">Fortinet certified</div>
+          </div>
+          <div class="stat">
+            <div class="num">AWS</div>
+            <div class="label">Active lab + project buildout</div>
+          </div>
+          <div class="stat">
+            <div class="num">Homelab</div>
+            <div class="label">Self-hosted infra and observability</div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px">
+          <h3>What you’ll find here</h3>
+          <ul class="list">
+            <li>Homelab architecture, VLANs, services, and operational notes</li>
+            <li>AWS learning projects translated into portfolio-style writeups</li>
+            <li>Networking and troubleshooting knowledge grounded in real production work</li>
+            <li>Documentation-first infrastructure thinking: inventory, diagrams, monitoring, and dependencies</li>
+            <li>A documented public homelab repository centered on architecture, services, and operational thinking</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About</h2>
+      <p class="sub">
+        I work in enterprise network engineering and I’m intentionally expanding that into cloud and infrastructure engineering.
+        My background is in production networking, firewall and SD-WAN operations, cloud connectivity, and operational troubleshooting.
+        My GitHub and this site are where I document the systems, labs, and projects that reflect that progression.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Current direction</h3>
+          <ul class="list">
+            <li>Turn enterprise networking experience into a stronger cloud / infrastructure portfolio.</li>
+            <li>Build AWS projects that don’t just “work,” but are documented like real systems.</li>
+            <li>Use my homelab as a proving ground for identity, monitoring, proxying, segmentation, and operations.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>What I want this portfolio to show</h3>
+          <ul class="list">
+            <li>I understand traffic flow, architecture, and troubleshooting — not just commands.</li>
+            <li>I can run infrastructure end-to-end: design, deploy, secure, observe, and document it.</li>
+            <li>I’m serious about bridging networking, Linux, AWS, and platform-style operational work.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section">
+    <div class="container">
+      <h2>Stack & core tooling</h2>
+      <p class="sub">
+        My lab is where I test practical infrastructure patterns: virtualization, segmentation, monitoring, identity,
+        remote access, DNS, reverse proxying, and internal services.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Infrastructure</h3>
+          <div class="chips">
+            <span class="chip">Proxmox</span>
+            <span class="chip">Linux VMs</span>
+            <span class="chip">Windows Server</span>
+            <span class="chip">Nginx / Reverse Proxy</span>
+            <span class="chip">Snapshots & backups</span>
+            <span class="chip">Self-hosted apps</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Network & security</h3>
+          <div class="chips">
+            <span class="chip">OPNsense</span>
+            <span class="chip">VLAN segmentation</span>
+            <span class="chip">Routing & switching</span>
+            <span class="chip">FortiGate / ASA exposure</span>
+            <span class="chip">Zscaler exposure</span>
+            <span class="chip">Tailscale</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Observability & docs</h3>
+          <div class="chips">
+            <span class="chip">NetBox</span>
+            <span class="chip">PRTG</span>
+            <span class="chip">Grafana</span>
+            <span class="chip">Wazuh</span>
+            <span class="chip">Vaultwarden</span>
+            <span class="chip">Documentation-first workflow</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:22px">
+        <div class="card">
+          <h3>Services I’ve been running / building around</h3>
+          <ul class="list">
+            <li><strong>NetBox</strong> for IPAM and infrastructure documentation</li>
+            <li><strong>PRTG + Grafana</strong> for visibility into systems and network health</li>
+            <li><strong>Vaultwarden</strong> for personal-lab secret management</li>
+            <li><strong>Windows Server services</strong> for lab DNS / AD-style functions and supporting infra</li>
+            <li><strong>Reverse proxying</strong> for internal web services and cleaner service exposure</li>
+            <li><strong>Remote access tooling</strong> for secure connectivity into the lab</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Lab principles</h3>
+          <ul class="list">
+            <li>Every service should be documented, reachable, and observable.</li>
+            <li>Architecture matters: VLANs, DNS, firewall rules, identity, and dependency mapping.</li>
+            <li>Use the lab to simulate operational thinking, not just to collect apps.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="homelab" class="section">
+    <div class="container">
+      <h2>Homelab architecture</h2>
+      <p class="sub">
+        The homelab is the core of my portfolio and the place where I test infrastructure ideas end-to-end:
+        virtualization, segmentation, monitoring, identity, secure remote access, documentation, and service operations.
+        The public repo for this environment is
+        <a href="https://github.com/laxamanasr-blip/homelab-network-core" target="_blank" rel="noopener noreferrer">homelab-network-core</a>.
+      </p>
+
+      <div class="arch-grid">
+        <div class="card">
+          <h3>What the repo represents</h3>
+          <ul class="list">
+            <li>A documented home infrastructure environment rather than a loose collection of VMs</li>
+            <li>Virtualization, firewalling, VLAN-aware networking, and service hosting in one cohesive setup</li>
+            <li>Internal services like monitoring, documentation, password management, and Windows-based infra functions</li>
+            <li>A place to turn diagrams, service inventories, and operational notes into a public engineering portfolio</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Focus areas inside the lab</h3>
+          <div class="spec-list">
+            <div class="spec">
+              <strong>Virtualization</strong>
+              Proxmox-based VM hosting and service isolation
+            </div>
+            <div class="spec">
+              <strong>Network core</strong>
+              OPNsense, VLANs, routing, and segmentation
+            </div>
+            <div class="spec">
+              <strong>Identity & infra</strong>
+              Windows services, DNS, and supporting internal roles
+            </div>
+            <div class="spec">
+              <strong>Monitoring</strong>
+              PRTG, Grafana, and operational visibility
+            </div>
+            <div class="spec">
+              <strong>Documentation</strong>
+              NetBox, inventory, topology, and IPAM
+            </div>
+            <div class="spec">
+              <strong>Access & security</strong>
+              Tailscale, reverse proxying, and secure service exposure
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:22px">
+        <div class="card">
+          <h3>Why this matters in the portfolio</h3>
+          <ul class="list">
+            <li>It shows that I can design and operate a small but real infrastructure environment.</li>
+            <li>It gives me a place to practice production-style habits: documentation, change validation, observability, and troubleshooting.</li>
+            <li>It creates a bridge between my enterprise networking background and the cloud / infrastructure roles I’m moving toward.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Next upgrade for this section</h3>
+          <ul class="list">
+            <li>Add a topology diagram exported from the repo</li>
+            <li>List the actual services and which VM / VLAN they live on</li>
+            <li>Include screenshots of NetBox, Grafana, and the core dashboard views</li>
+            <li>Turn this into a real architecture walkthrough instead of just a summary</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Featured projects</h2>
+      <p class="sub">
+        These are the kinds of projects I want this portfolio and GitHub profile to surface: not just screenshots,
+        but architecture, deployment notes, operational context, and lessons learned.
+      </p>
+
+      <div class="grid-3">
+        <article class="card project">
+          <h3>Homelab Network Core</h3>
+          <p class="muted">
+            My primary homelab repository and the core of this portfolio. It documents the architecture, services,
+            and infrastructure patterns behind my home lab environment, including virtualization, network services,
+            monitoring, identity, and self-hosted tooling.
+          </p>
+          <div class="tagrow">
+            <span class="tag">Proxmox</span>
+            <span class="tag">OPNsense</span>
+            <span class="tag">NetBox</span>
+            <span class="tag">Windows Server</span>
+            <span class="tag">PRTG</span>
+            <span class="tag">Grafana</span>
+          </div>
+          <ul class="list">
+            <li>Documents the core homelab architecture and service layout</li>
+            <li>Covers virtualization, network segmentation, internal services, and observability</li>
+            <li>Acts as the main portfolio repo for my lab infrastructure and future case-study writeups</li>
+          </ul>
+          <p style="margin-top:auto;margin-bottom:0">
+            <a href="https://github.com/laxamanasr-blip/homelab-network-core" target="_blank" rel="noopener noreferrer">
+              View repository →
+            </a>
+          </p>
+        </article>
+
+        <article class="card project">
+          <h3>AWS EC2 Web Server</h3>
+          <p class="muted">
+            A simple but real AWS project: deploying an EC2-hosted Nginx web server, opening the right security controls,
+            and using it as the first public-facing artifact in my cloud portfolio.
+          </p>
+          <div class="tagrow">
+            <span class="tag">AWS EC2</span>
+            <span class="tag">Amazon Linux</span>
+            <span class="tag">Nginx</span>
+            <span class="tag">Security Groups</span>
+          </div>
+          <ul class="list">
+            <li>Public web hosting fundamentals on AWS</li>
+            <li>Linux service management and deployment basics</li>
+            <li>Foundation for future reverse proxy or app-hosting work</li>
+          </ul>
+        </article>
+
+        <article class="card project">
+          <h3>Cloud & network case studies</h3>
+          <p class="muted">
+            A section for sanitized infrastructure writeups: hybrid connectivity, routing behavior, troubleshooting,
+            and the kinds of problems that sit at the boundary of networking and cloud.
+          </p>
+          <div class="tagrow">
+            <span class="tag">AWS</span>
+            <span class="tag">Routing</span>
+            <span class="tag">Hybrid Networking</span>
+            <span class="tag">Troubleshooting</span>
+          </div>
+          <ul class="list">
+            <li>Traffic-flow explanations and route-path analysis</li>
+            <li>Failure scenarios and troubleshooting methodology</li>
+            <li>Architecture diagrams without exposing employer-sensitive details</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="grid-2" style="margin-top:22px">
+        <div class="card">
+          <h3>What I’m actively building next</h3>
+          <ul class="list">
+            <li>Continue expanding <strong>homelab-network-core</strong> into a polished architecture + operations case study.</li>
+            <li>Add AWS mini-projects that reflect real infra patterns, not just “I launched a service.”</li>
+            <li>Write sanitized troubleshooting notes from network / cloud scenarios I’ve worked through.</li>
+            <li>Document services like NetBox, monitoring, reverse proxying, identity, and Windows infrastructure with production-style structure.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>How I want each project page to read</h3>
+          <ul class="list">
+            <li>Problem / objective</li>
+            <li>Architecture and traffic flow</li>
+            <li>Build steps and design decisions</li>
+            <li>Validation / testing</li>
+            <li>Issues encountered and how they were resolved</li>
+            <li>What I’d improve next</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certs" class="section">
+    <div class="container">
+      <h2>Certifications & learning path</h2>
+      <p class="sub">
+        I’m building on a strong networking base and pushing deeper into cloud, Linux, and infrastructure engineering.
+      </p>
+
+      <div class="cert-list">
+        <div class="cert">
+          <strong>Cisco CCNP Enterprise</strong>
+          Enterprise track completed.
+        </div>
+        <div class="cert">
+          <strong>Fortinet NSE 4</strong>
+          FortiGate / FortiOS knowledge and security platform exposure.
+        </div>
+        <div class="cert">
+          <strong>Cisco CCNA</strong>
+          Networking foundation across routing, switching, and operations.
+        </div>
+        <div class="cert">
+          <strong>AWS learning path in progress</strong>
+          Building hands-on projects to deepen cloud infrastructure skills.
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <h3>Current focus</h3>
+        <p class="muted" style="margin-bottom:0">
+          AWS hands-on projects, deeper Linux familiarity, and a stronger public portfolio that shows the kind of infrastructure work
+          I already do — and the cloud / platform roles I’m aiming for next.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Experience snapshot</h2>
+      <p class="sub">
+        A concise summary of the environments and responsibilities that shape the projects on this site.
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>Probe CX — Network / Infrastructure Engineering</h4>
+          <div class="meta">Enterprise environment | production operations, connectivity, and security</div>
+          <div class="muted">
+            Worked on enterprise network engineering tasks involving routing, firewall operations, SD-WAN-related work,
+            cloud connectivity scenarios, branch infrastructure, and support for production environments.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Comcast Business / Masergy — Network Activation Engineer</h4>
+          <div class="meta">Managed services / global networking environment</div>
+          <div class="muted">
+            Exposure to client networking, WAN / SD-WAN concepts, service delivery, and enterprise networking workflows in a managed services context.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <h4>Homelab / independent infrastructure work</h4>
+          <div class="meta">Ongoing | portfolio-driven systems engineering practice</div>
+          <div class="muted">
+            Built and maintained a personal lab environment for testing infrastructure, monitoring, identity, proxying,
+            segmentation, documentation, and cloud-adjacent workloads.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Links</h2>
+
+      <div class="card footer-box">
+        <p><strong>GitHub profile:</strong> <a href="https://github.com/laxamanasr-blip/Sid-Laxamana" target="_blank" rel="noopener noreferrer">github.com/laxamanasr-blip/Sid-Laxamana</a></p>
+        <p><strong>Homelab repo:</strong> <a href="https://github.com/laxamanasr-blip/homelab-network-core" target="_blank" rel="noopener noreferrer">github.com/laxamanasr-blip/homelab-network-core</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sidney-leigh-laxamana-270904241/" target="_blank" rel="noopener noreferrer">linkedin.com/in/sidney-leigh-laxamana-270904241/</a></p>
+        <p><strong>Email:</strong> <a href="mailto:@laxamanasr@gmail.com">@laxamanasr@gmail.com</a></p>
+        <p class="muted small" style="margin-bottom:0">
+          Built on AWS EC2 + Nginx as part of my cloud lab and portfolio work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-box">
+        <strong style="color:#fff">Next step for this site</strong>
+        <p class="muted">
+          The strongest upgrade from here is to turn each featured project into a real linked case study with diagrams,
+          screenshots, architecture notes, and a clear “problem → build → validation → lessons learned” flow.
+          The best place to start is the homelab repo: topology, service inventory, screenshots, and a real architecture walkthrough.
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+EOF
